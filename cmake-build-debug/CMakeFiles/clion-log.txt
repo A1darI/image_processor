@@ -1,0 +1,4 @@
+C:\Users\aidar\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.75\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/aidar/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/bin/ninja/win/ninja.exe -G Ninja C:\Users\aidar\cpp-base-hse-2022\projects\image_processor
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/aidar/cpp-base-hse-2022/projects/image_processor/cmake-build-debug
