@@ -57,7 +57,7 @@ Boundary selection. The image is converted to grayscale and a matrix is applied
 Pixels with a value that exceeds `threshold` are painted white, the rest are black.
 
 #### Gaussian Blur (-blur sigma)
-[Gaussian_blur]https://en.wikipedia.org/wiki/Gaussian_blur),
+[Gaussian_blur](https://en.wikipedia.org/wiki/Gaussian_blur),
 
 The value of each of the colors of the `C[x0][y0]` pixel is determined by the formula
 
