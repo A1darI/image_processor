@@ -6,6 +6,8 @@ This is a console application for processing 24-bit BMP files.
 
 [image_processor.cpp](https://github.com/A1darI/image_processor/blob/012ecaeb51d8c96ae99dc8248fb0e9c9dace86e8/image_processor.cpp) - initial source file
 
+[filters](https://github.com/A1darI/image_processor/tree/master/filters) - all filters realization
+
 
 
 ## Supported image format
