@@ -2,11 +2,20 @@
 
 This is a console application for processing 24-bit BMP files.
 
-## Description
+### Description
 
 [image_processor.cpp](https://github.com/A1darI/image_processor/blob/012ecaeb51d8c96ae99dc8248fb0e9c9dace86e8/image_processor.cpp) - initial source file
 
-[filters](https://github.com/A1darI/image_processor/tree/master/filters) - all filters realization
+filters - all filters implementation
+
+examples - filter application example
+
+file_handling - implementation of reading and writing BMP files
+
+[image.h](https://github.com/A1darI/image_processor/blob/bb41d152d47e1a3b0ba57b9ae46dad3ac8549dbf/image.h) - image representation
+
+[cmd_parser.h](https://github.com/A1darI/image_processor/blob/bb41d152d47e1a3b0ba57b9ae46dad3ac8549dbf/cmd_parser.h) - command line parsing
+
 
 
 
@@ -16,58 +25,11 @@ Input and output graphic files must be in the format [BMP](http://en.wikipedia.o
 
 A 24-bit BMP file is used without compression and without a color table. The type of `DIB header` used is `BITMAPINFOHEADER`.
 
-## Формат аргументов командной строки
+## Arguments format
 
-Описание формата аргументов командной строки:
-
-`{имя программы} {путь к входному файлу} {путь к выходному файлу}
-[-{имя фильтра 1} [параметр фильтра 1] [параметр фильтра 2] ...]
-[-{имя фильтра 2} [параметр фильтра 1] [параметр фильтра 2] ...] ...`
-
-При запуске без аргументов программа выводит справку.
-
-### Пример
-`./image_processor input.bmp /tmp/output.bmp -crop 800 600 -gs -blur 0.5`
-
-В этом примере
-1. Загружается изображение из файла `input.bmp`
-2. Обрезается до изображения с началом в верхнем левом углу и размером 800х600 пикселей
-3. Переводится в оттенки серого
-4. Применяется размытие с сигмой 0.5
-5. Полученное изображение сохраняется в файл `/tmp/output.bmp`
-
-Список фильтров может быть пуст, тогда изображение должно быть сохранено в неизменном виде.
-Фильтры применяются в том порядке, в котором они перечислены в аргументах командной строки.
+When run without arguments, the program displays help.
 
 ## Фильтры
-
-В формулах далее считаем, что каждая компонента цвета
-представлена вещественным числом от 0 до 1. Цвета пикселей
-представлены тройками `(R, G, B)`. Таким образом, `(0, 0, 0)` – черный, 
-`(1, 1, 1)` – белый.
-
-Если фильтр задан матрицей, это означает, что значение каждого из цветов определяется взвешенной суммой
-значений этого цвета в соседних пикселях в соответствии с матрицей. При этом целевому пикселю
-соответствует центральный элемент матрицы.
-
-Например, для фильтра, заданного матрицей
-
-![encoding](https://latex.codecogs.com/svg.image?%5Cbegin%7Bbmatrix%7D1%20&%202%20&%203%20%5C%5C4%20&%205%20&%206%20%5C%5C7%20&%208%20&%209%20%5C%5C%5Cend%7Bbmatrix%7D)
-
-Значение каждого из цветов целевого пикселя `C[x][y]` будет определяться формулой
-
-```
-C[x][y] =
-  min(1, max(0,
-   1*C[x-1][y-1] + 2*C[x][y-1] + 3*C[x+1][y-1] +
-   4*C[x-1][y]   + 5*C[x][y]   + 6*C[x+1][y]   +
-   7*C[x-1][y+1] + 8*C[x][y+1] + 9*C[x+1][y+1]
-))
-```
-
-При обработке пикселей, близких к краю изображения, часть матрицы может выходить за границу изображения.
-В таком случае в качестве значения пикселя, выходящего за границу, следует использовать значение ближайшего
-к нему пикселя изображения. 
 
 ### Список базовых фильтров
 
