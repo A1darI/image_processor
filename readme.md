@@ -2,7 +2,7 @@
 
 This is a console application for processing 24-bit BMP files.
 
-### Description
+## Description
 
 [image_processor.cpp](https://github.com/A1darI/image_processor/blob/012ecaeb51d8c96ae99dc8248fb0e9c9dace86e8/image_processor.cpp) - initial source file
 
@@ -17,48 +17,44 @@ file_handling - implementation of reading and writing BMP files
 [cmd_parser.h](https://github.com/A1darI/image_processor/blob/bb41d152d47e1a3b0ba57b9ae46dad3ac8549dbf/cmd_parser.h) - command line parsing
 
 
-
-
-## Supported image format
+### Supported image format
 
 Input and output graphic files must be in the format [BMP](http://en.wikipedia.org/wiki/BMP_file_format).
 
 A 24-bit BMP file is used without compression and without a color table. The type of `DIB header` used is `BITMAPINFOHEADER`.
 
-## Arguments format
+### Arguments format
 
 When run without arguments, the program displays help.
 
-## Фильтры
-
-### Список базовых фильтров
+### Filters
 
 #### Crop (-crop width height)
-Обрезает изображение до заданных ширины и высоты. Используется верхняя левая часть изображения.
+Crop the image to the specified width and height. The top left of the image is used.
 
-Если запрошенные ширина или высота превышают размеры исходного изображения, выдается доступная часть изображения.
+If the requested width or height exceeds the dimensions of the original image, the available portion of the image is returned.
 
 #### Grayscale (-gs)
-Преобразует изображение в оттенки серого по формуле
+Converts an image to grayscale using a formula
 
-![encoding](https://latex.codecogs.com/svg.image?R'%20=%20G'%20=%20B'%20=0.299%20R%20&plus;%200%20.587%20G%20&plus;%200%20.%20114%20B)
+![encoding](https://latex.codecogs.com/svg.image?R'%20=%20G'%20=%20B'%20=0.299%20R%20&plus;%200%20.587%20G%20&plus ;%200%20.%20114%20B)
 
 #### Negative (-neg)
-Преобразует изображение в негатив по формуле
+Converts an image to a negative using the formula
 
 ![encoding](https://latex.codecogs.com/svg.image?R'%20=%201%20-%20R,%20G'%20=%201%20-%20G,%20B'%20=%201%20-%20B)
 
 #### Sharpening (-sharp)
-Повышение резкости. Достигается применением матрицы
+Sharpening. Achieved by using a matrix
 
 ![encoding](https://latex.codecogs.com/svg.image?%5Cbegin%7Bbmatrix%7D%20&%20-1%20&%20%20%5C%5C-1%20&%205%20&%20-1%20%5C%5C%20&%20-1%20&%20%20%5C%5C%5Cend%7Bbmatrix%7D)
 
 #### Edge Detection (-edge threshold)
-Выделение границ. Изображение переводится в оттенки серого и применяется матрица
+Boundary selection. The image is converted to grayscale and a matrix is applied
 
 ![encoding](https://latex.codecogs.com/svg.image?%5Cbegin%7Bbmatrix%7D%20&%20-1%20&%20%20%5C%5C-1%20&%204%20&%20-1%20%5C%5C%20&%20-1%20&%20%20%5C%5C%5Cend%7Bbmatrix%7D)
 
-Пиксели со значением, превысившим `threshold`, окрашиваются в белый, остальные – в черный.
+Pixels with a value that exceeds `threshold` are painted white, the rest are black.
 
 #### Gaussian Blur (-blur sigma)
 [Гауссово размытие](https://ru.wikipedia.org/wiki/Размытие_по_Гауссу),
