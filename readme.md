@@ -2,18 +2,17 @@
 
 This is a console application for processing 24-bit BMP files.
 
-## Поддерживаемый формат изображений
+## Description
 
-Входные и выходные графические файлы должны быть в формате [BMP](http://en.wikipedia.org/wiki/BMP_file_format).
+[image_processor.cpp](https://github.com/A1darI/image_processor/blob/012ecaeb51d8c96ae99dc8248fb0e9c9dace86e8/image_processor.cpp) - initial source file
 
-Формат BMP поддерживает достаточно много вариаций, но в этом задании будет использоваться
-24-битный BMP без сжатия и без таблицы цветов. Тип используемого `DIB header` - `BITMAPINFOHEADER`.
 
-Пример файла в нужном формате есть в статье на Википедии [в разделе "Example 1"](https://en.wikipedia.org/wiki/BMP_file_format#Example_1)
-и в папке [examples](examples).
 
-При тестировании обязательно обращайте внимание на то, чтобы тестовое изображение 
-было сохранено именно в 24-битном BMP.
+## Supported image format
+
+Input and output graphic files must be in the format [BMP](http://en.wikipedia.org/wiki/BMP_file_format).
+
+A 24-bit BMP file is used without compression and without a color table. The type of `DIB header` used is `BITMAPINFOHEADER`.
 
 ## Формат аргументов командной строки
 
